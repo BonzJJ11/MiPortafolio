@@ -38,3 +38,4 @@ Abre tu navegador en `http://localhost:4200/`.
 - **Lenguaje:** TypeScript
 - **Estilos:** CSS
 - **Testing:** Vitest
+
