@@ -1,0 +1,56 @@
+.project-card {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 1.05rem;
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 24px rgba(98, 151, 207, 0.16);
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem;
+  color: #144370;
+  font-size: 1.02rem;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.project-card ul {
+  margin: 0.95rem 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.project-card li {
+  background: var(--chip-bg);
+  color: #2f6a9f;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actions a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+}

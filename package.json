@@ -1,0 +1,13 @@
+{
+  "name": "mi-portafolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix portafolio start",
+    "build": "npm --prefix portafolio run build",
+    "test": "npm --prefix portafolio test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

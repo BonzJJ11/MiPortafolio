@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--bg-deep: #dbeafe;
+	--bg-soft: #eff6ff;
+	--text-main: #12304d;
+	--text-muted: #4a6a88;
+	--glass-bg: rgba(255, 255, 255, 0.48);
+	--glass-border: rgba(255, 255, 255, 0.62);
+	--glass-shadow: 0 18px 45px rgba(91, 138, 186, 0.24);
+	--accent: #63b3ff;
+	--accent-strong: #2f8ef0;
+	--chip-bg: rgba(99, 179, 255, 0.16);
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+	font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+	color: var(--text-main);
+	background:
+		radial-gradient(1100px 620px at 8% -10%, #bfdbfe 0%, rgba(191, 219, 254, 0) 56%),
+		radial-gradient(980px 560px at 105% 10%, #dbeafe 0%, rgba(219, 234, 254, 0) 52%),
+		linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-deep) 100%);
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(420px 260px at 18% 85%, rgba(147, 197, 253, 0.32), transparent 70%),
+		radial-gradient(460px 280px at 92% 25%, rgba(125, 211, 252, 0.26), transparent 72%);
+	filter: blur(8px);
+	z-index: -1;
+}

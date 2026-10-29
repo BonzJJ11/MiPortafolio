@@ -1,0 +1,18 @@
+<app-section-title title="Sobre mí" subtitle="Perfil profesional"></app-section-title>
+
+<div class="profile-card">
+  <img class="avatar" [src]="profile.photoUrl" [alt]="'Foto de ' + profile.name" />
+  <div>
+    <p class="name">{{ profile.name }}</p>
+    <p class="role">{{ profile.role }}</p>
+  </div>
+</div>
+
+<p class="text">
+  Soy {{ profile.role }} de {{ profile.location }}. Me enfoco en crear interfaces limpias, rápidas y fáciles de usar en móvil.
+</p>
+
+<h3>Stack principal</h3>
+<ul class="skills">
+  <li *ngFor="let skill of skills">{{ skill }}</li>
+</ul>

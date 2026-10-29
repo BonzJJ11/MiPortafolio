@@ -1,0 +1,17 @@
+<section class="app-shell">
+	<header class="top-bar">
+		<p class="brand">Portafolio Profesional</p>
+		<span class="status">Disponible</span>
+	</header>
+
+	<main class="content">
+		<router-outlet></router-outlet>
+	</main>
+
+	<nav class="bottom-nav" aria-label="Navegación principal">
+		<a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+		<a routerLink="/sobre-mi" routerLinkActive="active">Perfil</a>
+		<a routerLink="/proyectos" routerLinkActive="active">Proyectos</a>
+		<a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+	</nav>
+</section>
