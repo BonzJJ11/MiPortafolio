@@ -1,5 +1,63 @@
-<app-section-title title="Proyectos" subtitle="Trabajo reciente"></app-section-title>
+<div class="projects-page-container">
+  <div class="projects-header-row">
+    <app-section-title 
+      subtitle="Galería Técnica & Código" 
+      title="Proyectos y Arquitectura"
+      description="Explora el código fuente en GitHub, patrones de diseño por capas y estructura modular implementada.">
+    </app-section-title>
 
-<section class="projects-list">
-  <app-project-card *ngFor="let project of projects" [project]="project"></app-project-card>
-</section>
+    <!-- Filtro de Categoría con PrimeNG SelectButton -->
+    <div class="filter-wrapper">
+      <p-selectButton 
+        [options]="filterOptions" 
+        [(ngModel)]="selectedFilter" 
+        optionLabel="label" 
+        optionValue="value" />
+    </div>
+  </div>
+
+  <!-- Banner Informativo de Enfoque Arquitectónico -->
+  <div class="arch-summary-banner">
+    <div class="arch-summary-icon">
+      <i class="pi pi-compass"></i>
+    </div>
+    <div class="arch-summary-body">
+      <h4>Enfoque Arquitectónico & Buenas Prácticas</h4>
+      <p>
+        Proyectos auditados con <strong>Arquitectura por Capas + API REST</strong> en Django REST Framework, 
+        <strong>Arquitectura Modular por Funcionalidades</strong> en Angular, y diseño de interfaces reactivas con 
+        la biblioteca de componentes <strong>PrimeNG</strong>.
+      </p>
+    </div>
+    <div class="arch-summary-tag">
+      <p-tag value="Código Auditado" severity="success" [rounded]="true" icon="pi pi-verified" />
+    </div>
+  </div>
+
+  <!-- Cuadrícula de Proyectos -->
+  <div class="projects-grid" *ngIf="filteredProjects.length > 0; else noProjects">
+    <app-project-card *ngFor="let project of filteredProjects" [project]="project"></app-project-card>
+  </div>
+
+  <ng-template #noProjects>
+    <div class="empty-state">
+      <i class="pi pi-search empty-icon"></i>
+      <h3>No se encontraron proyectos</h3>
+      <p>Prueba seleccionando otra categoría de filtro.</p>
+    </div>
+  </ng-template>
+
+  <!-- GitHub Callout Card -->
+  <div class="github-callout">
+    <div class="callout-icon">
+      <i class="pi pi-github"></i>
+    </div>
+    <div class="callout-text">
+      <h4>¿Quieres ver más detalles y commits en tiempo real?</h4>
+      <p>Revisa mis repositorios y contribuciones directamente en mi perfil de GitHub.</p>
+    </div>
+    <a href="https://github.com/BonzJJ11" target="_blank" rel="noopener">
+      <p-button label="Visitar GitHub" icon="pi pi-external-link" iconPos="right" />
+    </a>
+  </div>
+</div>

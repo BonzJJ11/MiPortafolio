@@ -1,17 +1,109 @@
-<section class="app-shell">
-	<header class="top-bar">
-		<p class="brand">Portafolio Profesional</p>
-		<span class="status">Disponible</span>
-	</header>
+<div class="portfolio-layout">
+  <!-- Header / Barra Superior Moderna -->
+  <header class="app-header">
+    <div class="header-container">
+      <a routerLink="/inicio" class="brand-link" (click)="closeMenu()">
+        <span class="brand-icon">
+          <i class="pi pi-code"></i>
+        </span>
+        <div class="brand-text">
+          <span class="brand-title">Portafolio</span>
+          <span class="brand-subtitle">Juan José · Angular & PrimeNG</span>
+        </div>
+      </a>
 
-	<main class="content">
-		<router-outlet></router-outlet>
-	</main>
+      <!-- Navegación Desktop -->
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-home"></i>
+          <span>Inicio</span>
+        </a>
+        <a routerLink="/sobre-mi" routerLinkActive="active">
+          <i class="pi pi-user"></i>
+          <span>Sobre mí</span>
+        </a>
+        <a routerLink="/proyectos" routerLinkActive="active">
+          <i class="pi pi-folder"></i>
+          <span>Proyectos</span>
+        </a>
+        <a routerLink="/contacto" routerLinkActive="active">
+          <i class="pi pi-envelope"></i>
+          <span>Contacto</span>
+        </a>
+      </nav>
 
-	<nav class="bottom-nav" aria-label="Navegación principal">
-		<a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-		<a routerLink="/sobre-mi" routerLinkActive="active">Perfil</a>
-		<a routerLink="/proyectos" routerLinkActive="active">Proyectos</a>
-		<a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-	</nav>
-</section>
+      <!-- Estado y Acción Rápida -->
+      <div class="header-actions">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-label">Disponible</span>
+        </div>
+        <a href="https://github.com/BonzJJ11" target="_blank" rel="noopener">
+          <p-button icon="pi pi-github" [rounded]="true" [text]="true" severity="secondary" pTooltip="Ver GitHub" tooltipPosition="bottom" />
+        </a>
+        <button class="mobile-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+          <i [class]="isMenuOpen ? 'pi pi-times' : 'pi pi-bars'"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div class="mobile-dropdown" [class.open]="isMenuOpen">
+      <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <i class="pi pi-home"></i>
+        <span>Inicio</span>
+      </a>
+      <a routerLink="/sobre-mi" routerLinkActive="active" (click)="closeMenu()">
+        <i class="pi pi-user"></i>
+        <span>Sobre mí</span>
+      </a>
+      <a routerLink="/proyectos" routerLinkActive="active" (click)="closeMenu()">
+        <i class="pi pi-folder"></i>
+        <span>Proyectos</span>
+      </a>
+      <a routerLink="/contacto" routerLinkActive="active" (click)="closeMenu()">
+        <i class="pi pi-envelope"></i>
+        <span>Contacto</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenido Dinámico con Router Outlet -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- Barra de Navegación Inferior (Móvil / PWA Friendly) -->
+  <nav class="bottom-tab-bar" aria-label="Navegación móvil">
+    <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="pi pi-home"></i>
+      <span>Inicio</span>
+    </a>
+    <a routerLink="/sobre-mi" routerLinkActive="active">
+      <i class="pi pi-user"></i>
+      <span>Perfil</span>
+    </a>
+    <a routerLink="/proyectos" routerLinkActive="active">
+      <i class="pi pi-briefcase"></i>
+      <span>Proyectos</span>
+    </a>
+    <a routerLink="/contacto" routerLinkActive="active">
+      <i class="pi pi-envelope"></i>
+      <span>Contacto</span>
+    </a>
+  </nav>
+
+  <!-- Footer Profesional Limpio -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p class="footer-copy">© 2026 Juan José — Construido con Angular & PrimeNG</p>
+      <div class="footer-palette-hint">
+        <span class="color-indicator dark" pTooltip="60% Principal #0B0B0F"></span>
+        <span class="color-indicator blue" pTooltip="30% Acento #00B4FF"></span>
+        <span class="color-indicator purple" pTooltip="10% Énfasis #7C3AED"></span>
+      </div>
+    </div>
+  </footer>
+</div>

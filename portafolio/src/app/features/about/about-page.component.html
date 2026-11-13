@@ -1,18 +1,382 @@
-<app-section-title title="Sobre mí" subtitle="Perfil profesional"></app-section-title>
+<app-section-title 
+  subtitle="Perfil Profesional & Arquitectura" 
+  title="Sobre mí & Análisis Técnico"
+  description="Conoce mi perfil técnico, dominio de la biblioteca PrimeNG, patrones de diseño por capas y evaluación de principios SOLID en mis proyectos.">
+</app-section-title>
 
-<div class="profile-card">
-  <img class="avatar" [src]="profile.photoUrl" [alt]="'Foto de ' + profile.name" />
-  <div>
-    <p class="name">{{ profile.name }}</p>
-    <p class="role">{{ profile.role }}</p>
+<div class="about-grid">
+  <!-- Tarjeta Principal de Presentación -->
+  <article class="bio-card">
+    <div class="bio-header">
+      <div class="bio-avatar-wrapper">
+        <img class="bio-avatar" [src]="profile.photoUrl" [alt]="'Foto de ' + profile.name" />
+      </div>
+      <div class="bio-identity">
+        <h3 class="bio-name">{{ profile.name }}</h3>
+        <p class="bio-role">{{ profile.role }}</p>
+        <span class="bio-location">
+          <i class="pi pi-map-marker"></i> {{ profile.location }}
+        </span>
+        <div class="primeng-pill">
+          <i class="pi pi-palette"></i>
+          <span>Especialista PrimeNG + Angular</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-body">
+      <p class="bio-paragraph">
+        Desarrollador enfocado en el ecosistema <strong>Angular</strong> y la biblioteca de componentes <strong>PrimeNG</strong>, con experiencia práctica construyendo aplicaciones web completas, reactivas y estructuradas con <strong>Django REST Framework</strong> y bases de datos relacionales como <strong>PostgreSQL</strong>.
+      </p>
+      <p class="bio-paragraph">
+        He aplicado <strong>arquitectura por capas</strong>, el patrón <strong>MTV/MVC adaptado a APIs REST</strong> y <strong>arquitectura modular por dominios</strong> en Angular, manteniendo un enfoque activo en la evolución hacia principios <strong>SOLID</strong> y código mantenible.
+      </p>
+    </div>
+
+    <div class="bio-actions">
+      <a routerLink="/contacto">
+        <p-button label="Ponerse en contacto" icon="pi pi-envelope" iconPos="right" />
+      </a>
+      <a [href]="profile.github" target="_blank" rel="noopener">
+        <p-button label="GitHub" icon="pi pi-github" [outlined]="true" severity="secondary" />
+      </a>
+      <a routerLink="/proyectos">
+        <p-button label="Ver Proyectos" icon="pi pi-folder" [text]="true" />
+      </a>
+    </div>
+  </article>
+
+  <!-- Filosofía / Pilares de Trabajo -->
+  <div class="pillars-column">
+    <div class="pillar-card">
+      <div class="pillar-icon blue">
+        <i class="pi pi-palette"></i>
+      </div>
+      <div>
+        <h4>Librería UI PrimeNG</h4>
+        <p>Interfaces pulidas y accesibles aprovechando componentes avanzados, el tema Aura y adaptación estricta a la paleta 60-30-10.</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon purple">
+        <i class="pi pi-sitemap"></i>
+      </div>
+      <div>
+        <h4>Arquitectura por Capas & Modular</h4>
+        <p>Organización estricta de responsabilidades entre frontend (Angular) y backend (Django REST con models, serializers y views).</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon green">
+        <i class="pi pi-shield"></i>
+      </div>
+      <div>
+        <h4>Buenas Prácticas & Seguridad</h4>
+        <p>Inyección de dependencias, hashing robusto de credenciales con sal y evolución guiada hacia principios SOLID.</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<p class="text">
-  Soy {{ profile.role }} de {{ profile.location }}. Me enfoco en crear interfaces limpias, rápidas y fáciles de usar en móvil.
-</p>
+<!-- =========================================================================
+     SECCIÓN DE AUDITORÍA Y ANÁLISIS DE ARQUITECTURA / SOLID (CONSULTADO)
+     ========================================================================= -->
+<section class="technical-review-section">
+  <div class="review-header">
+    <div class="review-title-group">
+      <div class="review-badge">
+        <i class="pi pi-code"></i>
+        <span>Auditoría de Código en GitHub</span>
+      </div>
+      <h3 class="review-title">Modelos, Arquitectura & Principios SOLID</h3>
+      <p class="review-subtitle">
+        Análisis de la estructura técnica implementada en proyectos reales (LastPage y Herederos-Alzate)
+      </p>
+    </div>
 
-<h3>Stack principal</h3>
-<ul class="skills">
-  <li *ngFor="let skill of skills">{{ skill }}</li>
-</ul>
+    <!-- Navegación con PrimeNG SelectButton -->
+    <div class="tab-control-wrapper">
+      <p-selectButton 
+        [options]="tabOptions" 
+        [(ngModel)]="activeTab" 
+        optionLabel="label" 
+        optionValue="value" />
+    </div>
+  </div>
+
+  <!-- PESTAÑA 1: ESTRUCTURAS & MODELOS -->
+  <div class="tab-content" *ngIf="activeTab === 'arquitectura'">
+    <div class="arch-overview-grid">
+      <!-- Tarjeta LastPage -->
+      <div class="arch-project-card">
+        <div class="project-arch-header">
+          <div class="badge-title-box">
+            <span class="card-icon-pill blue">
+              <i class="pi pi-server"></i>
+            </span>
+            <div>
+              <h4>LastPage — Blog de Sentimientos</h4>
+              <p-tag value="Arquitectura por Capas + API REST" severity="info" [rounded]="true" />
+            </div>
+          </div>
+          <a href="https://github.com/BonzJJ11/LastPage" target="_blank" rel="noopener">
+            <p-button icon="pi pi-github" [text]="true" [rounded]="true" severity="secondary" pTooltip="Ver Repositorio" />
+          </a>
+        </div>
+
+        <p class="arch-description">
+          Separa completamente el frontend en <strong>Angular</strong> del backend en <strong>Django REST Framework</strong>, comunicados mediante API REST vía HTTP y persistencia en modelos ORM.
+        </p>
+
+        <div class="table-layers-wrapper">
+          <table class="layers-table">
+            <thead>
+              <tr>
+                <th>Archivo</th>
+                <th>Responsabilidad en la Arquitectura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>models.py</code></td>
+                <td>Representación de entidades, relaciones y tablas de base de datos.</td>
+              </tr>
+              <tr>
+                <td><code>serializers.py</code></td>
+                <td>Transformación bidireccional y validación estricta de datos JSON.</td>
+              </tr>
+              <tr>
+                <td><code>views.py</code></td>
+                <td>Recepción de peticiones HTTP mediante ViewSets (<code>PublicacionViewSet</code>, <code>ComentarioViewSet</code>, <code>ReaccionViewSet</code>).</td>
+              </tr>
+              <tr>
+                <td><code>urls.py</code></td>
+                <td>Definición y registro de rutas de endpoints REST.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mtv-explanation-box">
+          <div class="box-icon"><i class="pi pi-info-circle"></i></div>
+          <div class="box-text">
+            <strong>¿Es MVC o MTV?</strong>
+            <p>
+              Django utiliza formalmente el patrón <strong>MTV (Model - Template - View)</strong>. Al desarrollar una API REST que no renderiza plantillas HTML en el servidor (sino que alimenta una SPA en Angular), la estructura se adapta: el <em>Model</em> gestiona datos, la <em>View</em> atiende las peticiones HTTP y el <em>Serializer</em> sustituye al Template para transformar la representación de los datos.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Herederos-Alzate -->
+      <div class="arch-project-card">
+        <div class="project-arch-header">
+          <div class="badge-title-box">
+            <span class="card-icon-pill purple">
+              <i class="pi pi-sitemap"></i>
+            </span>
+            <div>
+              <h4>Herederos-Alzate — Sistema de Inventario</h4>
+              <p-tag value="Arquitectura Modular en Angular" severity="success" [rounded]="true" />
+            </div>
+          </div>
+          <a href="https://github.com/BonzJJ11/Herederos-Alzate" target="_blank" rel="noopener">
+            <p-button icon="pi pi-github" [text]="true" [rounded]="true" severity="secondary" pTooltip="Ver Repositorio" />
+          </a>
+        </div>
+
+        <p class="arch-description">
+          Maneja arquitectura por capas en backend (Django + PostgreSQL) junto con una <strong>organización modular por funcionalidades</strong> en el frontend Angular:
+        </p>
+
+        <div class="tree-structure-box">
+          <div class="tree-header">
+            <i class="pi pi-folder-open"></i>
+            <span>Estructura Modular Angular (PPI-master/src/app/)</span>
+          </div>
+          <pre class="folder-tree">
+app/
+├── compartido/
+│   └── disenos/                <span class="tree-comment"># Componentes y estilos comunes</span>
+├── nucleo/
+│   ├── guardias/               <span class="tree-comment"># Control de rutas y seguridad</span>
+│   └── servicios/              <span class="tree-comment"># auth.service.ts y servicios singleton</span>
+└── paginas/
+    ├── funcionalidades/        <span class="tree-comment"># Módulos encapsulados por dominio</span>
+    │   ├── autenticacion/
+    │   ├── empleados/
+    │   ├── inventario/
+    │   └── prove/
+    ├── home/
+    └── perfil/</pre>
+        </div>
+
+        <p class="arch-subtext">
+          Esta estructura separa adecuadamente los elementos compartidos de los servicios centrales con <strong>inyección de dependencias</strong>, facilitando la escalabilidad del sistema.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PESTAÑA 2: PRINCIPIOS SOLID -->
+  <div class="tab-content" *ngIf="activeTab === 'solid'">
+    <div class="solid-intro-card">
+      <div class="solid-intro-icon">
+        <i class="pi pi-check-square"></i>
+      </div>
+      <div>
+        <h4>Evaluación Práctica de SOLID</h4>
+        <p>
+          SOLID es un conjunto de 5 principios para diseñar software mantenible y desacoplado. En el análisis de código se identifican bases sólidas de partida y una hoja de ruta clara de mejora:
+        </p>
+      </div>
+    </div>
+
+    <div class="solid-principles-grid">
+      <div *ngFor="let item of solidPrinciples" class="solid-card">
+        <div class="solid-card-top">
+          <span class="solid-letter-badge">{{ item.letter }}</span>
+          <div class="solid-title-area">
+            <h5>{{ item.name }}</h5>
+            <p-tag [value]="item.status" [severity]="item.badgeSeverity" [rounded]="true" />
+          </div>
+        </div>
+
+        <p class="solid-evaluation-text">{{ item.evaluation }}</p>
+
+        <div class="solid-tip-box" *ngIf="item.improvementTip">
+          <i class="pi pi-lightbulb tip-icon"></i>
+          <span><strong>Oportunidad:</strong> {{ item.improvementTip }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PESTAÑA 3: SEGURIDAD & EVOLUCIÓN -->
+  <div class="tab-content" *ngIf="activeTab === 'seguridad'">
+    <div class="security-and-evolution-grid">
+      <!-- Tarjeta 1: Propuesta de Arquitectura Modular por Funcionalidades -->
+      <div class="evolution-card">
+        <div class="card-icon-title">
+          <i class="pi pi-sliders-h blue-icon"></i>
+          <h4>{{ targetArchitecture.title }}</h4>
+        </div>
+        <p class="evolution-desc">{{ targetArchitecture.description }}</p>
+
+        <div class="layers-proposal-list">
+          <div *ngFor="let layer of targetArchitecture.layers" class="proposal-layer-item">
+            <span class="layer-code-badge">{{ layer.name }}</span>
+            <span class="layer-desc">{{ layer.purpose }}</span>
+          </div>
+        </div>
+
+        <div class="evolution-note">
+          <i class="pi pi-info-circle"></i>
+          <span>
+            Introducir <code>services.py</code> (lógica de negocio) y <code>selectors.py</code> (consultas ORM) permite que las vistas solo manejen HTTP, cumpliendo el principio de <strong>Responsabilidad Única</strong> sin sobrecargar el proyecto.
+          </span>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Buenas Prácticas de Seguridad Identificadas -->
+      <div class="evolution-card">
+        <div class="card-icon-title">
+          <i class="pi pi-shield purple-icon"></i>
+          <h4>Auditoría de Seguridad & Calidad de Código</h4>
+        </div>
+        <p class="evolution-desc">
+          Aspectos clave identificados para robustecer la seguridad en entornos de producción:
+        </p>
+
+        <div class="security-items-list">
+          <div *ngFor="let sec of securityPractices" class="security-item">
+            <div class="sec-item-header">
+              <span class="sec-title">
+                <i [class]="sec.icon"></i>
+                {{ sec.title }}
+              </span>
+              <p-tag [value]="'Prioridad ' + sec.priority" severity="warn" [rounded]="true" />
+            </div>
+            <div class="sec-current">
+              <strong>Estado analizado:</strong> {{ sec.current }}
+            </div>
+            <div class="sec-solution">
+              <strong>Mejora implementada:</strong> {{ sec.solution }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SECCIÓN DE HABILIDADES & PRIMENG
+     ========================================================================= -->
+<section class="skills-section">
+  <div class="skills-header">
+    <div class="skills-title-badge">
+      <i class="pi pi-palette"></i>
+      <span>Stack Técnico & PrimeNG</span>
+    </div>
+    <h3 class="skills-title">Tecnologías y Herramientas</h3>
+    <p class="skills-subtitle">
+      Herramientas dominadas para construir interfaces reactivas, arquitectura desacoplada y APIs REST
+    </p>
+  </div>
+
+  <div class="skills-categories-grid">
+    <!-- Frontend & PrimeNG -->
+    <div class="category-card featured-cat">
+      <div class="category-title-bar">
+        <i class="pi pi-palette blue-icon"></i>
+        <div>
+          <h4>Frontend & PrimeNG UI</h4>
+          <span class="cat-sub">Especialidad en UI interactiva</span>
+        </div>
+      </div>
+      <div class="chips-container">
+        <div *ngFor="let skill of frontendSkills" class="skill-chip" [class.highlighted-chip]="skill.highlight">
+          <i [class]="skill.icon"></i>
+          <span>{{ skill.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend & Base de Datos -->
+    <div class="category-card">
+      <div class="category-title-bar">
+        <i class="pi pi-server purple-icon"></i>
+        <div>
+          <h4>Backend & Persistencia</h4>
+          <span class="cat-sub">APIs REST, DRF y PostgreSQL</span>
+        </div>
+      </div>
+      <div class="chips-container">
+        <div *ngFor="let skill of backendSkills" class="skill-chip" [class.highlighted-chip]="skill.highlight">
+          <i [class]="skill.icon"></i>
+          <span>{{ skill.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arquitectura & Principios -->
+    <div class="category-card">
+      <div class="category-title-bar">
+        <i class="pi pi-sitemap green-icon"></i>
+        <div>
+          <h4>Arquitectura & Principios</h4>
+          <span class="cat-sub">Capas, SOLID y Modularidad</span>
+        </div>
+      </div>
+      <div class="chips-container">
+        <div *ngFor="let skill of archSkills" class="skill-chip">
+          <i [class]="skill.icon"></i>
+          <span>{{ skill.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

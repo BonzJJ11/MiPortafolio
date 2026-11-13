@@ -1,20 +1,123 @@
-<app-section-title [title]="'Hola, soy ' + profile.name" subtitle="Portafolio móvil"></app-section-title>
+<!-- Hero Section Moderno -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="pi pi-palette"></i>
+      <span>Especialista Angular & Librería PrimeNG</span>
+    </div>
 
-<section class="hero-profile">
-  <img class="avatar" [src]="profile.photoUrl" [alt]="'Foto de ' + profile.name" />
-  <div class="identity">
-    <p class="role">{{ profile.role }}</p>
-    <p class="location">{{ profile.location }}</p>
+    <h1 class="hero-title">
+      Hola, soy <span class="highlight-text">{{ profile.name }}</span>
+    </h1>
+
+    <p class="hero-role">
+      {{ profile.role }}
+      <span class="location-tag">
+        <i class="pi pi-map-marker"></i> {{ profile.location }}
+      </span>
+    </p>
+
+    <p class="hero-description">
+      {{ profile.summary }}
+    </p>
+
+    <!-- Botones de Acción con PrimeNG -->
+    <div class="hero-cta">
+      <a routerLink="/proyectos">
+        <p-button label="Explorar Proyectos" icon="pi pi-arrow-right" iconPos="right" />
+      </a>
+      <a routerLink="/sobre-mi">
+        <p-button label="Ver Análisis SOLID & Arquitectura" icon="pi pi-sitemap" [outlined]="true" severity="info" />
+      </a>
+      <a routerLink="/contacto">
+        <p-button label="Contacto" icon="pi pi-envelope" [outlined]="true" severity="secondary" />
+      </a>
+      <a [href]="profile.github" target="_blank" rel="noopener">
+        <p-button icon="pi pi-github" [rounded]="true" [text]="true" severity="secondary" pTooltip="GitHub" tooltipPosition="bottom" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Tarjeta de Perfil / Foto con Efecto Glassmorphism Claro -->
+  <div class="hero-avatar-card">
+    <div class="avatar-ring">
+      <img class="hero-avatar" [src]="profile.photoUrl" [alt]="'Foto de ' + profile.name" />
+    </div>
+    <div class="avatar-badge">
+      <i class="pi pi-check-circle"></i>
+      <span>PrimeNG & Arquitectura por Capas</span>
+    </div>
   </div>
 </section>
 
-<p class="summary">{{ profile.summary }}</p>
+<!-- Métricas / Stats de Impacto -->
+<section class="stats-grid">
+  <div *ngFor="let stat of stats" class="stat-card">
+    <div class="stat-icon-wrapper">
+      <i [class]="stat.icon"></i>
+    </div>
+    <div class="stat-details">
+      <span class="stat-value">{{ stat.value }}</span>
+      <span class="stat-label">{{ stat.label }}</span>
+    </div>
+  </div>
+</section>
 
-<section class="featured">
-  <h3>Proyectos destacados</h3>
-  <div class="list">
+<!-- Callout de Arquitectura & Buenas Prácticas -->
+<section class="arch-quick-banner">
+  <div class="banner-left">
+    <div class="banner-icon-box">
+      <i class="pi pi-shield"></i>
+    </div>
+    <div class="banner-text">
+      <h4>Arquitectura por Capas, MTV y Principios SOLID</h4>
+      <p>
+        Consulta el análisis detallado de estructuras de código en mis proyectos: separación en 
+        <code>models.py</code>, <code>serializers.py</code>, <code>views.py</code>, organización modular en Angular y evaluación de principios SOLID.
+      </p>
+    </div>
+  </div>
+  <div class="banner-right">
+    <a routerLink="/sobre-mi">
+      <p-button label="Leer Auditoría Técnica" icon="pi pi-arrow-up-right" iconPos="right" />
+    </a>
+  </div>
+</section>
+
+<!-- Sección Proyectos Destacados -->
+<section class="featured-section">
+  <div class="section-top">
+    <app-section-title 
+      subtitle="Trabajos en GitHub" 
+      title="Proyectos y Repositorios"
+      description="Código fuente en GitHub estructurado con Django REST Framework, PostgreSQL, Angular y la suite PrimeNG.">
+    </app-section-title>
+
+    <div class="section-actions-desktop">
+      <a routerLink="/proyectos">
+        <p-button label="Ver todos" icon="pi pi-arrow-up-right" iconPos="right" [text]="true" />
+      </a>
+    </div>
+  </div>
+
+  <div class="projects-grid">
     <app-project-card *ngFor="let project of featuredProjects" [project]="project"></app-project-card>
   </div>
+
+  <div class="section-actions-mobile">
+    <a routerLink="/proyectos">
+      <p-button label="Ver todos los proyectos" icon="pi pi-arrow-right" iconPos="right" [outlined]="true" />
+    </a>
+  </div>
 </section>
 
-<a class="view-all" routerLink="/proyectos">Ver todos los proyectos</a>
+<!-- Banner Call to Action -->
+<section class="cta-banner">
+  <div class="cta-banner-content">
+    <h3>¿Tienes una idea o proyecto en mente?</h3>
+    <p>Estoy disponible para colaborar en proyectos frontend con Angular & PrimeNG o arquitecturas Full Stack.</p>
+  </div>
+  <a routerLink="/contacto">
+    <p-button label="Hablemos Ahora" icon="pi pi-send" iconPos="right" />
+  </a>
+</section>

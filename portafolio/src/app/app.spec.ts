@@ -16,10 +16,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render shell brand', async () => {
+  it('should render brand title', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.brand')?.textContent).toContain('Portafolio Profesional');
+    expect(compiled.querySelector('.brand-title')?.textContent).toContain('Portafolio');
   });
 });
